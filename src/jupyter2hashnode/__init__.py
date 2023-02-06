@@ -1,23 +1,15 @@
 """Top-level package for Jupyter 2 Hashnode."""
-import tomli
-import importlib.metadata
 from .jupyter2hashnode import Jupyter2Hashnode
 from .hashnode import HashnodePoster
 import os
+import importlib.metadata
 
-__author__ = """Tiago Patricio Santos"""
-__email__ = 'tiagopatriciosantos@gmail.xcom'
-__app_name__ = "jupyter2hashnode"
-__version__ = None
-try:
-    __version__ : importlib.metadata.version('jupyter2hashnode')
-except:
-    if os.path.exists('pyproject.toml'):
-        with open('pyproject.toml', mode='rb') as pyproject:
-            __version__ = tomli.load(pyproject)['project']['version']
+_DISTRIBUTION_METADATA = importlib.metadata.metadata('jupyter2hashnode')
 
-# if not __version__ :
-#     __version__ = "undefined"
+__author__ = _DISTRIBUTION_METADATA['Author']
+__email__ = _DISTRIBUTION_METADATA['Author-email']
+__app_name__ = _DISTRIBUTION_METADATA['Name']
+__version__ = _DISTRIBUTION_METADATA['Version']
+__homepage__ = _DISTRIBUTION_METADATA['Home-page']
 
 
- 

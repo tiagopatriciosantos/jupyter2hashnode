@@ -1,40 +1,27 @@
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "jupyter2hashnode"
-version = "0.0.12"
-authors = [
-  { name="Tiago Patricio Santos", email="tiagopatriciosantos@gmail.com" },
-]
-description = "Package to export from jupyter notebook into a hashnode blog"
+version = "0.1.6"
+description = "Export from jupyter notebook into hashnode blog articles"
+authors = ["Tiago Patricio Santos <tiagopatriciosantos@gmail.com>"]
+license = "MIT"
 readme = "README.md"
-requires-python = ">=3.7"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
-dependencies = [
-  "nbconvert",
-  "python-dotenv",
-  "typer",
-  "requests",
-  "Pillow",
-  "Rich",
-  "tomli"
-]
+homepage = "https://github.com/tiagopatriciosantos/jupyter2hashnode"
 
-[project.urls]
-"Homepage" = "https://github.com/tiagopatriciosantos/jupyter2hashnode"
-"Bug Tracker" = "https://github.com/tiagopatriciosantos/jupyter2hashnode/issues"
+[tool.poetry.dependencies]
+python = "^3.7"
+nbconvert = {extras = ["all"], version = "^7.2.9"}
+python-dotenv = "^0.21.1"
+typer = {extras = ["all"], version = "^0.7.0"}
+requests = "^2.28.2"
+Pillow = "^9.4.0"
 
-[tool.setuptools.packages.find]
-# scanning for namespace packages is true by default in pyproject.toml, so
-# you need NOT include the following line.
-namespaces = true
-where = ["src"]
+[tool.poetry.scripts]
+rick-portal-gun = "jupyter2hashnode.cli:app"
 
-[tool.setuptools.package-data]
-"jupyter2hashnode.nbconvert.templates.hashnode" = ["*.json","*.j2"]
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

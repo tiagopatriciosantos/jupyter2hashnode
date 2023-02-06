@@ -56,5 +56,5 @@ class HashnodePoster:
             json={"query": query, "variables": variables},
             headers=self._headers,
         )
-        print(response.json())
-        return response.json()["data"]["createPublicationStory"]["post"]["slug"]
+        
+        return response.json()

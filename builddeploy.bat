@@ -1,3 +1,4 @@
 call .\.venv\Scripts\activate
-call python -m build
-call py -m twine upload dist/*
+call poetry version patch
+call poetry build
+call poetry publish

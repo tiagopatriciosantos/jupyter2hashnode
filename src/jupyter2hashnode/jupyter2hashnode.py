@@ -65,14 +65,20 @@ class Jupyter2Hashnode():
         """
         path = None
         try:
-            path, md_file = self._create_markdown_files(notebook_path, output_path)
+            print("Starting the publication...")
+            doc_basename = os.path.splitext(os.path.basename(notebook_path))[0]
+            if not output_path and len(str(output_path))>0:
+                output_path= "md_"+doc_basename
+            print("Creating markdown file at", output_path,"...")
+            path, md_file = self._create_markdown_files(notebook_path,doc_basename, output_path)
+            print("Compressing and uploading images from ", path,"...")
             images_filenames = self._get_images_filename(path)
             self._compress_images(path, images_filenames)
             image_url_dict = self._upload_images(path, images_filenames)
-            print(image_url_dict)
             file_path =os.path.join(path, md_file)
             self._replace_image_url(file_path, image_url_dict )
             if upload:
+                print("Story publication from file", file_path, f" with the title '{title}'...")
                 self._create_publication_story(file_path, title, hide_from_feed)
         finally:
             # when finished deletes all files
@@ -89,14 +95,19 @@ class Jupyter2Hashnode():
 
         hasnode = HashnodePoster(self.HASHNODE_TOKEN)
 
-        hashnode_url = hasnode.create_post_hashnode(
+        response = hasnode.create_post_hashnode(
             title,
             content,
             self.HASHNODE_PUBLICATION_ID,
             tags,
             hide_from_feed=hide_from_feed
         )
-        print(f"Find Hashnode Post: {hashnode_url}")
+        code = response["data"]["code"]
+        message = response["data"]["message"]
+        cuid = response["data"]["createPublicationStory"]["post"]["cuid"]
+
+        print(f"{code}: {message}")
+        print(f"Hashnode Post URL: https://hashnode.com/edit/{hashnode_url}")
         
 
 
@@ -149,15 +160,12 @@ class Jupyter2Hashnode():
 
 
 
-    def _create_markdown_files(self, notebook_path, output_path):
-        
-        doc_basename = os.path.splitext(os.path.basename(notebook_path))[0]
-        if not output_path and len(str(output_path))>0:
-            output_path= "md_"+doc_basename
-
+    def _create_markdown_files(self, notebook_path, doc_basename, output_path):
         c = Config()
         base_template = "hashnode"
-        template_path =os.path.join("nbconvert", "templates", base_template) 
+        dirname, _ = os.path.split(os.path.abspath(__file__))
+        template_path =os.path.join(dirname, "nbconvert", "templates", base_template)
+
         c.TemplateExporter.extra_template_basedirs.append(template_path)
         c.TemplateExporter.template_name=template_path
         # Load notebook from path
