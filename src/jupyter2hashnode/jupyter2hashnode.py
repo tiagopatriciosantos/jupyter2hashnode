@@ -18,7 +18,7 @@ class Jupyter2Hashnode():
 
     Notes:
     - To obtain JWT
-        1. Open https://hashnode.com
+        1. Open https://hashnode.com, account must be logged in
         2. Open DevTools of chrome browser (F12)
         3. Go to Application tab
         4. Go to Cookies
@@ -39,7 +39,9 @@ class Jupyter2Hashnode():
     Methods:
     create_publication_story(title:str, notebook_path: str, output_path:Optional[str]=None, delete_files:bool=True, upload:bool=True):
     Creates a publication story on the Hashnode blog platform by converting a Jupyter Notebook to a markdown file, compressing images, uploading images to the Hashnode server, and replacing image URLs in the markdown file.
+
     """
+
     def __init__(self, HASHNODE_JWT:str, HASHNODE_TOKEN:str, HASHNODE_PUBLICATION_ID:str):
         self.JWT = HASHNODE_JWT
         self.HASHNODE_TOKEN = HASHNODE_TOKEN
@@ -62,7 +64,9 @@ class Jupyter2Hashnode():
 
         Returns:
         None
+
         """
+        
         path = None
         try:
             print("Starting the publication...")
@@ -102,12 +106,13 @@ class Jupyter2Hashnode():
             tags,
             hide_from_feed=hide_from_feed
         )
-        code = response["data"]["code"]
-        message = response["data"]["message"]
-        cuid = response["data"]["createPublicationStory"]["post"]["cuid"]
+        pub_story =response["data"]["createPublicationStory"]
+        code = pub_story["code"]
+        message = pub_story["message"]
+        cuid = pub_story["post"]["cuid"]
 
-        print(f"{code}: {message}")
-        print(f"Hashnode Post URL: https://hashnode.com/edit/{hashnode_url}")
+        print(f"Result [{code}]: {message}")
+        print(f"Hashnode Post URL: https://hashnode.com/edit/{cuid}")
         
 
 

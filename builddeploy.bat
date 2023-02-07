@@ -1,4 +1,7 @@
 call .\.venv\Scripts\activate
-call poetry version patch
+:: if prerelease run this instead of path-> call poetry version prerelease
+:: call poetry version patch
+call poetry version prerelease
 call poetry build
-call poetry publish
+call poetry publish -u __token__ --password %POETRY_PYPI_TOKEN%
+

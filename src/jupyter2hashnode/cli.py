@@ -49,7 +49,7 @@ def main(notebook_path: str = typer.Argument(..., help="notebook file name or co
 
     Notes:
 
-    To obtain JWT: Open https://hashnode.com, open DevTools of chrome browser (F12), go to Application tab, go to Cookies, find and copy value of "jwt" cookie (245 characters)
+    To obtain JWT: Open https://hashnode.com, account must be logged in, open DevTools of chrome browser (F12), go to Application tab, go to Cookies, find and copy value of "jwt" cookie (245 characters)
 
     To obtain Hashnode API token: Open https://hashnode.com/settings/developer, click on "Generate New Token" button or use the existing one
 
