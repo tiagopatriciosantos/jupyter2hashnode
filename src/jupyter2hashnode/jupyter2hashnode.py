@@ -106,14 +106,17 @@ class Jupyter2Hashnode():
             tags,
             hide_from_feed=hide_from_feed
         )
-        pub_story =response["data"]["createPublicationStory"]
-        code = pub_story["code"]
-        message = pub_story["message"]
-        cuid = pub_story["post"]["cuid"]
+        if response["data"]:
+            pub_story =response["data"]["createPublicationStory"]
+            code = pub_story["code"]
+            message = pub_story["message"]
+            cuid = pub_story["post"]["cuid"]
 
-        print(f"Result [{code}]: {message}")
-        print(f"Hashnode Post URL: https://hashnode.com/edit/{cuid}")
-        
+            print(f"Result [{code}]: {message}")
+            print(f"Hashnode Post URL: https://hashnode.com/edit/{cuid}")
+        else:
+            print(response["errors"])
+            print(f"Article not published! Verify the message.")
 
 
 
