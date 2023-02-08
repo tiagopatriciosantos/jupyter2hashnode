@@ -3,15 +3,4 @@ python-dotenv
 typer
 requests
 Pillow
-build
-twine
-sphinx
 Rich
-tomli
-pyautogui
-traitlets
-testpath
-pandocfilters
-mistune
-entrypoints
-jupyter-core
