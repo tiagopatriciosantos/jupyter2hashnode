@@ -95,7 +95,7 @@ class Jupyter2Hashnode():
         with open(file_path, "r") as file:
             content = file.read()
 
-        tags = ["python", "linearprogramming", "tutorial", "datascience"]
+        tags = []
 
         hasnode = HashnodePoster(self.HASHNODE_TOKEN)
 
