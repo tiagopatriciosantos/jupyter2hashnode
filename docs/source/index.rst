@@ -9,6 +9,7 @@ Welcome to jupyter2hashnode's documentation!
 .. toctree::
    :maxdepth: 2
 
+   notebooks/about
    notebooks/installation
    notebooks/usage
 
