@@ -43,6 +43,8 @@ def main(notebook_path: str = typer.Argument(..., help="notebook file name or co
     compressing images, uploading images to the Hashnode server, and replacing image URLs 
     in the markdown file, then published.
 
+    You can upload an image at https://hashnode.com/uploader and use the url generated to include in Jupyter Notebooks images.
+
     If jwt, token, publication_id arguments not passed then will use environment variables HASHNODE_JWT, HASHNODE_TOKEN, HASHNODE_PUBLICATION_ID. 
 
     Notes:

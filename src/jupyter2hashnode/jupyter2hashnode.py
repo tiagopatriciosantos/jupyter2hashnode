@@ -15,6 +15,7 @@ class Jupyter2Hashnode():
     class Jupyter2Hashnode
 
     The Jupyter2Hashnode class is used to convert Jupyter Notebooks to Hashnode publication stories by compressing images, uploading images to the Hashnode server, and replacing image URLs in the markdown file.
+    You can upload an image at https://hashnode.com/uploader and use the url generated to include in Jupyter Notebooks images.
 
     Notes:
     - To obtain JWT
@@ -33,7 +34,7 @@ class Jupyter2Hashnode():
     - 
 
     Attributes:
-    HASHNODE_JWT (str): JWT token for authentication with the Hashnode image uploader, https://hashnode.com/api/upload-image.
+    HASHNODE_JWT (str): JWT token for authentication with the Hashnode image uploader, https://hashnode.com/api/upload-image. 
     HASHNODE_TOKEN (str): Token for authentication with the Hashnode server, to use https://api.hashnode.com  mutation createPublicationStory endpoint
     HASHNODE_PUBLICATION_ID (str): ID of the Hashnode publication e.g. https://hashnode.com/<id>/dashboard
     Methods:
