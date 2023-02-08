@@ -1,0 +1,32 @@
+# See https://nbsphinx.readthedocs.io/en/0.8.12/usage.html#Using-requirements.txt
+image: python:3-slim
+
+variables:
+  PIP: python3 -m pip
+  SPHINX: python3 -m sphinx -W --keep-going --color
+
+build-docs:
+  stage: build
+  script:
+    - apt-get update -y
+    - apt-get install -y --no-install-recommends pandoc
+    - $PIP install -r doc/requirements.txt
+    - $SPHINX -d doctrees doc html -b html
+    - $SPHINX -d doctrees doc linkcheck -b linkcheck
+  artifacts:
+    when: always
+    paths:
+      - html
+      - linkcheck/output.*
+
+pages:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - mv html public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
