@@ -12,11 +12,3 @@ Welcome to jupyter2hashnode's documentation!
    notebooks/about
    notebooks/installation
    notebooks/usage
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

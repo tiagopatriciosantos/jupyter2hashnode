@@ -1,3 +1,13 @@
+[![PyPI version](https://badge.fury.io/py/jupyter2hashnode.svg)](https://badge.fury.io/py/jupyter2hashnode)
+
+[See the full documentation here](https://jupyter2hashnode.readthedocs.io/en/latest/)
+
+# How to install
+```console
+    $ pip install jupyter2hashnode
+```
+
+
 # Using `jupyter2hashnode` as a command line tool
 
 jupyter2hashnode converts the specified Jupyter Notebook to a Hashnode publication story, 
@@ -17,7 +27,7 @@ To obtain Publication ID: Go to https://hashnode.com/settings/blogs, click "Dash
 **Usage**:
 
 ```console
-$ jupyter2hashnode [OPTIONS] NOTEBOOK_PATH [OUTPUT_PATH]
+    $ jupyter2hashnode [OPTIONS] NOTEBOOK_PATH [OUTPUT_PATH]
 ```
 
 **Arguments**:
@@ -70,12 +80,6 @@ Methods:
 create_publication_story(title:str, notebook_path: str, output_path:Optional[str]=None, delete_files:bool=True, upload:bool=True):
 Creates a publication story on the Hashnode blog platform by converting a Jupyter Notebook to a markdown file, compressing images, uploading images to the Hashnode server, and replacing image URLs in the markdown file.
 
-**Usage**:
-
-```console
-$ jupyter2hashnode [OPTIONS] HASHNODE_JWT HASHNODE_TOKEN HASHNODE_PUBLICATION_ID
-```
-
 **Arguments**:
 
 * `HASHNODE_JWT`: [required]
@@ -87,3 +91,12 @@ $ jupyter2hashnode [OPTIONS] HASHNODE_JWT HASHNODE_TOKEN HASHNODE_PUBLICATION_ID
 * `--install-completion`: Install completion for the current shell.
 * `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
 * `--help`: Show this message and exit.
+
+**Usage**
+
+```python
+    from jupyter2hashnode import Jupyter2Hashnode
+        
+    j2h = Jupyter2Hashnode(jwt, token, publication_id)
+    j2h.create_publication_story(title, notebook_path, hide_from_feed, output_path, delete_files, upload)
+```
