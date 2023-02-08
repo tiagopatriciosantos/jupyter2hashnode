@@ -11,3 +11,10 @@ build:
 python:
   install:
     - requirements: docs/requirements.txt
+
+sphinx:
+  fail_on_warning: true
+
+formats:
+  - pdf
+  - html
