@@ -1,5 +1,7 @@
 [![PyPI version](https://badge.fury.io/py/jupyter2hashnode.svg)](https://badge.fury.io/py/jupyter2hashnode)
 
+Jupyter2Hashnode is a useful tool for converting Jupyter Notebooks into Hashnode stories by simplifying the process of compressing images, uploading images, and publishing the story article.
+
 [See the full documentation here](https://jupyter2hashnode.readthedocs.io/en/latest/)
 
 # How to install
@@ -8,11 +10,7 @@
 ```
 
 
-# Using `jupyter2hashnode` as a command line tool
-
-jupyter2hashnode converts the specified Jupyter Notebook to a Hashnode publication story, 
-compressing images, uploading images to the Hashnode server, and replacing image URLs 
-in the markdown file, then published.
+# Using as a command line tool
 
 If jwt, token, publication_id arguments not passed then will use environment variables HASHNODE_JWT, HASHNODE_TOKEN, HASHNODE_PUBLICATION_ID. 
 
@@ -50,11 +48,9 @@ To obtain Publication ID: Go to https://hashnode.com/settings/blogs, click "Dash
 * `--help`: Show this message and exit.
 
 
-# Using `jupyter2hashnode` as a library
+# Using as a library
 
 class Jupyter2Hashnode
-
-The Jupyter2Hashnode class is used to convert Jupyter Notebooks to Hashnode publication stories by compressing images, uploading images to the Hashnode server, and replacing image URLs in the markdown file.
 
 Notes:
 - To obtain JWT
@@ -73,26 +69,37 @@ Notes:
 - 
 
 Attributes:
-HASHNODE_JWT (str): JWT token for authentication with the Hashnode image uploader, https://hashnode.com/api/upload-image.
-HASHNODE_TOKEN (str): Token for authentication with the Hashnode server, to use https://api.hashnode.com  mutation createPublicationStory endpoint
-HASHNODE_PUBLICATION_ID (str): ID of the Hashnode publication e.g. https://hashnode.com/<id>/dashboard
+
+    HASHNODE_JWT (str): JWT token for authentication at Hashnode image uploader, https://hashnode.com/api/upload-image.
+    HASHNODE_TOKEN (str): Token for authentication with the Hashnode server, to use https://api.hashnode.com
+                                mutation createPublicationStory endpoint
+    HASHNODE_PUBLICATION_ID (str): ID of the Hashnode publication e.g. https://hashnode.com/<id>/dashboard
+        
 Methods:
-create_publication_story(title:str, notebook_path: str, output_path:Optional[str]=None, delete_files:bool=True, upload:bool=True):
-Creates a publication story on the Hashnode blog platform by converting a Jupyter Notebook to a markdown file, compressing images, uploading images to the Hashnode server, and replacing image URLs in the markdown file.
 
-**Arguments**:
+    create_publication_story(title:str, notebook_path: str, output_path:Optional[str]=None, 
+                                delete_files:bool=True, upload:bool=True):
+        This function is used to create a publication story on the Hashnode blog platform by 
+        converting a Jupyter Notebook to a markdown file, compressing images, uploading images
+        to the Hashnode server, and replacing image URLs in the markdown file.
 
-* `HASHNODE_JWT`: [required]
-* `HASHNODE_TOKEN`: [required]
-* `HASHNODE_PUBLICATION_ID`: [required]
+        Parameters:
+            title (str): Title of the publication story.
+            notebook_path (str): Path to the Jupyter Notebook file.
+            hide_from_feed (bool): Hide this article from Hashnode and display it only on your blog, Default is True.
+            output_path (str, optional): Path to the output directory. Default is None.
+            delete_files (bool, optional): Boolean value indicating whether to delete all files after 
+                                            creating the publication story. Default is True.
+            upload (bool, optional): Boolean value indicating whether to upload the publication story
+                                        to the Hashnode server. Default is True.
 
-**Options**:
+        Returns:
+            None
 
-* `--install-completion`: Install completion for the current shell.
-* `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
-* `--help`: Show this message and exit.
 
-**Usage**
+
+    
+**Usage**:
 
 ```python
     from jupyter2hashnode import Jupyter2Hashnode

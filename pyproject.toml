@@ -6,6 +6,7 @@ authors = ["Tiago Patricio Santos <tiagopatriciosantos@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/tiagopatriciosantos/jupyter2hashnode"
+documentation = "https://jupyter2hashnode.readthedocs.io/en/latest/index.html"
 
 [tool.poetry.dependencies]
 python = "^3.8"
