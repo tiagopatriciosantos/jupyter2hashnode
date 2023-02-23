@@ -43,6 +43,7 @@ class HashnodePoster:
         variables = {
             "input": {
                 "title": title,
+                "isPartOfPublication":{"publicationId": publicationID},
                 "contentMarkdown": content,
                 "tags": [{"_id": tag, "slug": tag, "name": tag} for tag in tags],
             },

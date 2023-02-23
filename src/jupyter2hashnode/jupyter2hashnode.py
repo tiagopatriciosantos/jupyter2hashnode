@@ -107,7 +107,7 @@ class Jupyter2Hashnode():
             tags,
             hide_from_feed=hide_from_feed
         )
-        if response["data"]:
+        if "data" in response:
             pub_story =response["data"]["createPublicationStory"]
             code = pub_story["code"]
             message = pub_story["message"]
