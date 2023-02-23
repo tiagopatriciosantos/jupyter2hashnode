@@ -134,7 +134,7 @@ class Jupyter2Hashnode():
             content = file.read()
         for k, v in image_url_dict.items():
             content = content.replace(k, v)
-        with open(file_path, 'w') as file:
+        with open(file_path, 'w', encoding='utf8') as file:
             file.write(content)
     
 

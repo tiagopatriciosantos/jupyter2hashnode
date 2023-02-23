@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jupyter2hashnode"
-version = "0.1.22"
+version = "0.1.23"
 description = "Export from jupyter notebook into hashnode blog articles"
 authors = ["Tiago Patricio Santos <tiagopatriciosantos@gmail.com>"]
 license = "MIT"
