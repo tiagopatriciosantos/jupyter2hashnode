@@ -130,7 +130,7 @@ class Jupyter2Hashnode():
 
 
     def _replace_image_url(self, file_path, image_url_dict):
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf8') as file:
             content = file.read()
         for k, v in image_url_dict.items():
             content = content.replace(k, v)
