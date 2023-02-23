@@ -93,7 +93,7 @@ class Jupyter2Hashnode():
 
     def _create_publication_story(self, file_path, title, hide_from_feed=True):
 
-        with open(file_path, "r") as file:
+        with open(file_path, "r", encoding='utf8') as file:
             content = file.read()
 
         tags = []
