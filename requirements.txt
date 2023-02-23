@@ -4,3 +4,6 @@ typer
 requests
 Pillow
 Rich
+Sphinx==6.1.3
+sphinx-rtd-theme==1.2.0
+nbsphinx==0.8.12
